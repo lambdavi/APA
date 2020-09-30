@@ -37,7 +37,7 @@ int main() {
     while(strcmp(str,"0")){
         if(strcmp(select,"riga")==0) {
             printf("Lavoro sulla riga\n");
-            ruotaMat(mat[ind], nc, pos, dir);
+            ruotaMat(mat[ind-1], nc, pos, dir);
         }
         else{
             printf("Lavoro sulle colonna\n");
@@ -47,7 +47,7 @@ int main() {
             }
             ruotaMat(app, nr, pos, dir);
             for (int j = 0; j < nr; ++j) {
-                mat[j][ind]=app[j];
+                mat[j][ind-1]=app[j];
             }
         }
         for (int i = 0; i < nr; ++i) {

@@ -5,6 +5,7 @@ typedef struct dict{
     char ricod[20];
     char orig[20];
 }dict;
+
 char *rimpiazza(char *str, char *strVecchia, char *strNuova)
 {
     static char buff[200];
@@ -21,7 +22,7 @@ char *rimpiazza(char *str, char *strVecchia, char *strNuova)
 int main() {
     FILE *f1,*f2,*f3;
     int S=0;
-    char str[200],str2[200];
+    char str2[200];
 
     f1=fopen("sorgente.txt","r+");
     f2=fopen("dizionario.txt","r+");
@@ -38,11 +39,9 @@ int main() {
     }
     //Leggo una riga alla volta del file sorgente e sostituisco le parole
     while(fgets(str2,200,f1)!=NULL){
-        for (int i = 0; i < S; ++i) {
-            while (strstr(str2, dizionario[i].orig) != NULL) {
+        for (int i = 0; i < S; ++i)
+            while (strstr(str2, dizionario[i].orig) != NULL)
                 strcpy(str2,rimpiazza(str2,dizionario[i].orig,dizionario[i].ricod));
-            }
-        }
         fputs(str2,f3);
     }
     fclose(f1);
